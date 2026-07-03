@@ -13,6 +13,13 @@ let currentTicker = 0;
 let tickerTimer = null;
 
 const broadcastScene = document.getElementById("broadcastScene");
+const groupATable = document.getElementById("groupATable");
+const leagueArea = document.getElementById("leagueArea");
+const knockoutArea = document.getElementById("knockoutArea");
+const divisionPill = document.getElementById("divisionPill");
+const contentTitle = document.getElementById("contentTitle");
+const groupAHeading = document.getElementById("groupAHeading");
+const groupBHeading = document.getElementById("groupBHeading");
 const currentDivision = document.getElementById("currentDivision");
 const nextDivision = document.getElementById("nextDivision");
 const progressBar = document.getElementById("progressBar");
@@ -170,8 +177,86 @@ function updateClock(){
 
 }
 
+const Layouts = {
+
+    DOUBLE_GROUP_KNOCKOUT: "double-group-knockout",
+
+    SINGLE_GROUP_KNOCKOUT: "single-group-knockout",
+
+    FESTIVAL_DOUBLE: "festival-double",
+
+    FESTIVAL_SINGLE: "festival-single"
+
+};
+
+const currentBroadcast = {
+
+   layout: Layouts.DOUBLE_GROUP_KNOCKOUT,
+
+    name: "UNDER 13",
+
+    title: "LEAGUE STANDINGS",
+
+    groupA: "GROUP A",
+
+    groupB: "GROUP B",
+
+    sponsor: "Ultra Clean",
+
+    pitches: "Pitches 5 & 6"
+
+};
+
+function setBroadcastTitles(division, title, groupA, groupB){
+
+    divisionPill.textContent = division;
+
+    contentTitle.textContent = title;
+
+    groupAHeading.textContent = groupA;
+
+    groupBHeading.textContent = groupB;
+
+}
+
+function renderLayout(layout){
+
+    console.log("Loading layout:", layout);
+
+    // Hide everything first
+    leagueArea.style.display = "none";
+    knockoutArea.style.display = "none";
+
+    switch(layout){
+
+        case Layouts.DOUBLE_GROUP_KNOCKOUT:
+
+            leagueArea.style.display = "flex";
+            knockoutArea.style.display = "flex";
+
+            break;
+
+        case Layouts.FESTIVAL_DOUBLE:
+
+            leagueArea.style.display = "flex";
+
+            break;
+
+    }
+
+}
+
 loadApplication();
 
 updateClock();
 
 setInterval(updateClock,1000);
+
+setBroadcastTitles(
+    currentBroadcast.name,
+    currentBroadcast.title,
+    currentBroadcast.groupA,
+    currentBroadcast.groupB
+);
+
+renderLayout(currentBroadcast.layout);
