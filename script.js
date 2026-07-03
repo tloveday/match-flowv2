@@ -12,7 +12,7 @@ let tickerMessages = [];
 let currentTicker = 0;
 let tickerTimer = null;
 
-const frame = document.getElementById("leagueFrame");
+const broadcastScene = document.getElementById("broadcastScene");
 const currentDivision = document.getElementById("currentDivision");
 const nextDivision = document.getElementById("nextDivision");
 const progressBar = document.getElementById("progressBar");
