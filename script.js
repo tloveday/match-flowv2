@@ -15,6 +15,10 @@ let tickerTimer = null;
 const broadcastScene = document.getElementById("broadcastScene");
 const groupATable = document.getElementById("groupATable");
 const groupBTable = document.getElementById("groupBTable");
+const sf1Home = document.getElementById("sf1Home");
+const sf1Away = document.getElementById("sf1Away");
+const sf2Home = document.getElementById("sf2Home");
+const sf2Away = document.getElementById("sf2Away");
 const leagueArea = document.getElementById("leagueArea");
 const knockoutArea = document.getElementById("knockoutArea");
 const divisionPill = document.getElementById("divisionPill");
@@ -296,6 +300,16 @@ function renderStandingsTable(table, teams){
 
 }
 
+function renderKnockout(standings){
+
+    sf1Home.textContent = standings.groupA[0].name;
+    sf1Away.textContent = standings.groupB[1].name;
+
+    sf2Home.textContent = standings.groupB[0].name;
+    sf2Away.textContent = standings.groupA[1].name;
+
+}
+
 loadApplication();
 
 updateClock();
@@ -320,3 +334,5 @@ renderStandingsTable(
     groupBTable,
     currentBroadcast.standings.groupB
 );
+
+renderKnockout(currentBroadcast.standings);

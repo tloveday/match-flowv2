@@ -606,7 +606,9 @@ main{
 
     background:#d9d9d9;
 
-    overflow:hidden;
+    overflow-y:auto;
+
+    overflow-x:hidden;
 
     position:relative;
 
@@ -801,8 +803,6 @@ footer img{
 
 #leagueArea{
 
-    flex:1;
-
     display:flex;
 
     gap:16px;
@@ -825,63 +825,62 @@ footer img{
 
 #knockoutArea{
 
-    margin:12px;
-
     display:flex;
 
     flex-direction:column;
 
     gap:16px;
 
+    margin:16px 24px 24px 24px;
+
 }
 
 #semiFinals{
 
-    display:flex;
+    display:grid;
 
-    gap:16px;
+    grid-template-columns:repeat(2, minmax(260px, 360px));
+
+    justify-content:center;
+
+    gap:20px;
 
 }
 
 .semiFinal{
 
-    flex:1;
-
-    height:80px;
-
-    border:2px dashed #ccc;
-
     display:flex;
 
-    justify-content:center;
+    flex-direction:column;
 
-    align-items:center;
+    background:#fff;
 
-    font-size:22px;
+    border:2px dashed #cfcfcf;
 
-    font-weight:700;
+    border-radius:10px;
 
-    color:#999;
+    overflow:hidden;
 
 }
 
 #final{
 
-    height:80px;
+    width:42%;
+max-width:420px;
 
-    border:2px dashed #ccc;
+    margin:0 auto;
 
     display:flex;
 
-    justify-content:center;
+    flex-direction:column;
 
-    align-items:center;
+    background:#fff;
 
-    font-size:22px;
+    border:2px dashed #cfcfcf;
 
-    font-weight:700;
+    border-radius:10px;
 
-    color:#999;
+    overflow:hidden;
 
 }
 
@@ -993,5 +992,29 @@ footer img{
     text-transform:uppercase;
 
     padding:12px;
+
+}
+
+.matchTitle{
+
+    background:#111;
+
+    color:white;
+
+    padding:8px;
+
+    text-align:center;
+
+    font-weight:bold;
+
+    border-bottom:2px solid #d71920;
+
+}
+
+.teamSlot{
+
+    margin:4px 8px;
+
+    padding:8px;
 
 }
