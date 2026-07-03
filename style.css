@@ -962,6 +962,12 @@ footer img{
 
 }
 
+.qualificationLine{
+
+    border-bottom: 3px solid #18c964;
+
+}
+
 .tableBody{
 
     display:flex;

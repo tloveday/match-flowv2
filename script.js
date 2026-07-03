@@ -14,6 +14,7 @@ let tickerTimer = null;
 
 const broadcastScene = document.getElementById("broadcastScene");
 const groupATable = document.getElementById("groupATable");
+const groupBTable = document.getElementById("groupBTable");
 const leagueArea = document.getElementById("leagueArea");
 const knockoutArea = document.getElementById("knockoutArea");
 const divisionPill = document.getElementById("divisionPill");
@@ -191,7 +192,7 @@ const Layouts = {
 
 const currentBroadcast = {
 
-   layout: Layouts.DOUBLE_GROUP_KNOCKOUT,
+    layout: Layouts.DOUBLE_GROUP_KNOCKOUT,
 
     name: "UNDER 13",
 
@@ -203,10 +204,31 @@ const currentBroadcast = {
 
     sponsor: "Ultra Clean",
 
-    pitches: "Pitches 5 & 6"
+    pitches: "Pitches 5 & 6",
+
+    standings: {
+
+        groupA: [
+
+            { position: 1, name: "Cardigan Town", points: 12 },
+            { position: 2, name: "Crymych", points: 9 },
+            { position: 3, name: "Fishguard", points: 6 },
+            { position: 4, name: "Narberth", points: 3 }
+
+        ],
+
+        groupB: [
+
+            { position: 1, name: "Aberaeron", points: 12 },
+            { position: 2, name: "Newcastle Emlyn", points: 9 },
+            { position: 3, name: "Llandysul", points: 6 },
+            { position: 4, name: "St Clears", points: 3 }
+
+        ]
+
+    }
 
 };
-
 function setBroadcastTitles(division, title, groupA, groupB){
 
     divisionPill.textContent = division;
@@ -246,6 +268,34 @@ function renderLayout(layout){
 
 }
 
+function renderStandingsTable(table, teams){
+
+    table.innerHTML = "";
+
+    teams.forEach(team => {
+
+        const row = document.createElement("div");
+
+        row.className = "tableRow";
+
+        if(team.position === 2){
+
+            row.classList.add("qualificationLine");
+
+        }
+
+        row.innerHTML = `
+            <span>${team.position}</span>
+            <span>${team.name}</span>
+            <span>${team.points}</span>
+        `;
+
+        table.appendChild(row);
+
+    });
+
+}
+
 loadApplication();
 
 updateClock();
@@ -260,3 +310,13 @@ setBroadcastTitles(
 );
 
 renderLayout(currentBroadcast.layout);
+
+renderStandingsTable(
+    groupATable,
+    currentBroadcast.standings.groupA
+);
+
+renderStandingsTable(
+    groupBTable,
+    currentBroadcast.standings.groupB
+);
